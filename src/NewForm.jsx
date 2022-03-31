@@ -75,7 +75,7 @@ const NewForm = ({ create }) => {
                 }}
             >
                 <CssTextField
-                    // autoFocus
+                    autoFocus
                     onChange={(e) => setMessage({ ...message, author: e.target.value })}
                     value={message.author}
                     label="Имя"
