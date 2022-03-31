@@ -30,8 +30,8 @@ function App() {
     <div className="App">
       <header>
         <div className="App-header">
-          {messages.map((message) => (
-            <Message message={message} key={message.id} />
+          {messages.map((message, id) => (
+            <Message key={id} message={message} />
           ))}
         </div>
       </header>
