@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Form from "./Form";
 import Message from "./Message";
 import "./message.css";
+import NewForm from "./NewForm";
+import Chat from "./Chat";
 
 function App() {
   const [messages, setMessage] = useState([]);
@@ -14,11 +15,11 @@ function App() {
     if (messages.length > 0) {
       let lastMsg = messages[messages.length - 1];
       let robotMsg = {
-        author: "Robot",
+        author: "robot",
         textMessage:
           "Спасибо за сообщение",
       };
-      if (lastMsg.author !== "Robot") {
+      if (lastMsg.author !== "robot") {
         setTimeout(() => {
           setMessage([...messages, robotMsg]);
         }, 1500);
@@ -29,13 +30,14 @@ function App() {
   return (
     <div className="App">
       <header>
+        <Chat />
         <div className="App-header">
-          {messages.map((message) => (
-            <Message message={message} key={message.id} />
+          {messages.map((message, id) => (
+            <Message key={id} message={message} />
           ))}
         </div>
       </header>
-      <Form create={createMessage} />
+      <NewForm create={createMessage} />
     </div>
   );
 }
