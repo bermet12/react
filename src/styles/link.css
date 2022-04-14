@@ -16,3 +16,11 @@ a {
     color: yellowgreen;
     cursor: default;
 }
+
+.css-13knzn3-MuiFormControl-root-MuiTextField-root .MuiOutlinedInput-root {
+    margin-bottom: 10px;
+}
+
+.myHeader {
+    color: #2e7d32;
+}
