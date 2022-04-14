@@ -1,0 +1,47 @@
+.App {
+    position: relative;
+}
+
+.form {
+    width: 521px;
+    margin: 15px auto;
+    padding: 20px 0;
+    border: 1px solid #2e7d32;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+.myInput {
+    width: 73%;
+    padding: 5px 15px;
+    margin: 5px 0;
+    border: 1px solid #2e7d32;
+  }
+  .myBtn{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 6px 161px;
+    background-color: #2e7d32;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);
+    color: #fff;
+  } 
+
+  .css-ro5212-MuiFormControl-root-MuiTextField-root {
+    margin-bottom: 10px !important;
+}
+
+.css-13knzn3-MuiFormControl-root-MuiTextField-root {
+  margin: 10px 0 0 0 !important;
+}
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  margin-top: 10px !important;
+}
+
+.css-ke5b6m-MuiButtonBase-root-MuiButton-root { 
+  margin-top: 10px !important;
+}
+   

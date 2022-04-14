@@ -1,0 +1,10 @@
+.myContacts {
+    display: flex;
+    flex-direction: column;
+    line-height: 2.2;
+    font-size: 20px;
+}
+
+.checkbox {
+    margin: 10px;
+}
