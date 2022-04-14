@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+.App {
+  width: 800px;
+}
+
+.send-form {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 500px;
+  gap: 10px;  
+}
+
+.send-form input, .send-form textarea {
+  font-size: 24px;
+} 
+
+.myInput {
+  width: 100%;
+  padding: 5px 15px;
+  margin: 5px 0;
+  border: 1px solid teal;
+}
+
+.myBtn{
+  padding: 5px 15px;
+  color: teal;
+  font-size: 14px;
+  background-color: transparent;
+  border: 1px solid teal;
+  cursor: pointer;
+}
