@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
+import { chatSelector } from "../redux/reducer/chatSelector/selector";
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -34,44 +35,69 @@ const theme = createTheme({
 });
 
 let newChatName = "";
-export default function ChatsList({ createAvailable }) {
-    const chats = useSelector(state => state.chats)
+export default function ChatsListMain({ createAvailable }) {
+    const chats = useSelector(chatSelector)
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
     const createNewChat = () => {
         dispatch({ type: "createChat", payload: newChatName });
-        // navigate("/chats/" + id);
     }
+    const deleteChat = (value) => {
+        dispatch({ type: "deleteChat", payload: value })
+    }
+    const onNameChange = (event) => {
+        newChatName = event.target.value
+    }
+    return <ChatsList
+        createNewChat={createNewChat}
+        deleteChat={deleteChat}
+        chats={chats}
+        onNameChange={onNameChange}
+        createAvailable={createAvailable} />
+}
+
+const ChatsList = ({ createNewChat, deleteChat, chats, onNameChange, createAvailable }) => {
 
     return <Container>
         <ThemeProvider theme={theme}>
             <List sx={{ fontSize: 20 }} >
                 {Object.keys(chats).map((value) => {
                     return <ListItem key={value}>
-                        <Link to={"/chats/" + value} style={{ textDecoration: "none", display: "block" }}>
+                        <Link to={"/chats/" + value}
+                            style={{ textDecoration: "none", display: "block" }}>
                             {chats[value].name}
                         </Link>
-                        <Button variant="outlined" color="success" sx={{ ml: 5 }} onClick={() => { dispatch({ type: "deleteChat", payload: value }) }}>
+
+                        <Button
+                            variant="outlined"
+                            color="success"
+                            sx={{ ml: 5 }}
+                            onClick={() => { deleteChat(value) }}>
                             Удалить
                         </Button>
                     </ListItem>
                 })}
             </List>
 
-            {<Container sx={{ flexDirection: "column", display: "flex" }} maxWidth="sm">
+            {<Container
+                sx={{ flexDirection: "column", display: "flex" }}
+                maxWidth="sm">
+
                 <h2 className="myHeader">Cоздайте новый Чат</h2>
-                <CssTextField id='chat-name' variant='outlined' label='Название чата'
-                    onChange={(event) => {
-                        newChatName = event.target.value;
-                    }}
+
+                <CssTextField
+                    id='chat-name'
+                    variant='outlined'
+                    label='Название чата'
+                    onChange={onNameChange}
                 ></CssTextField>
 
                 <Button
                     color="success"
                     variant="contained"
                     type='button'
-                    onClick={createNewChat}>Добавить</Button>
-
+                    onClick={() => { createNewChat(newChatName) }}>
+                    Добавить
+                </Button>
             </Container>
             }
         </ThemeProvider>

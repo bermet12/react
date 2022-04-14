@@ -1,5 +1,5 @@
 const initialState = {
-    username: 'User:',
+    username: "Пользователь",
     active: false
 }
 const reducer = (state = initialState, action) => {
