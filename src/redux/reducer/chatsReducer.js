@@ -1,5 +1,14 @@
 const initialState = {
-    [Date.now()]: { name: 'Chat 1', messages: [{ author: 'robot', text: 'welcome to Chat 1' }] }
+    [`Chat 1`]:
+    {
+        name: 'Chat 1',
+        messages: [
+            {
+                author: 'robot',
+                text: 'welcome to Chat 1'
+            }
+        ]
+    }
 }
 
 const reducer = (state = initialState, action) => {
@@ -7,7 +16,7 @@ const reducer = (state = initialState, action) => {
         case "createChat":
             return {
                 ...state,
-                [Date.now()]: {
+                [`${action.payload}`]: {
                     name: action.payload,
                     messages: [{ author: 'robot', text: `welcome to ${action.payload}` }]
                 }

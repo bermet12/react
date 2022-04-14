@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import '../styles/link.css';
+import { chatSelector } from "../redux/reducer/chatSelector/selector";
+import { addMessageThunk } from '../redux/reducer/action'
 
 //Стили для формы
 const CssTextField = styled(TextField)({
@@ -41,17 +43,14 @@ let newAuthor = '', newText = '';
 
 export default function Chats() {
     let { chatId } = useParams();
-    const chats = useSelector(state => state.chats);
+    const chats = useSelector(chatSelector);
     const dispatch = useDispatch();
     let chat = chats[chatId];
     let textFieldRef = useRef(null);
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        dispatch({ type: "addMessage", payload: { chatId, author: newAuthor, text: newText } })
-        setTimeout(() => {
-            dispatch({ type: "addMessage", payload: { chatId, author: "robot", text: "Спасибо за ваше сообщение!" } })
-        }, 1000)
+        dispatch(addMessageThunk(chatId, newAuthor, newText));
         textFieldRef?.current.focus();
     }
 
@@ -64,12 +63,16 @@ export default function Chats() {
     return <Container id="chat" >
         <ThemeProvider theme={theme}>
             <MessageList messages={chat.messages} />
-            <form className='send-form' action='#' onSubmit={onFormSubmit} style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "auto"
+            <form
+                className='send-form'
+                action='#'
+                onSubmit={onFormSubmit}
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "auto"
 
-            }}>
+                }}>
 
                 <CssTextField
                     id='name'
@@ -82,10 +85,19 @@ export default function Chats() {
                     }}
                 ></CssTextField>
 
-                <CssTextField id='message' variant='outlined' label='сообщение' multiline={true} rows='5' onChange={(event) => {
-                    newText = event.target.value;
-                }}></CssTextField>
-                <Button color="success" variant="contained" type='submit'>Отправить</Button>
+                <CssTextField
+                    id='message'
+                    variant='outlined'
+                    label='сообщение'
+                    multiline={true}
+                    rows='5'
+                    onChange={(event) => {
+                        newText = event.target.value;
+                    }} />
+                <Button
+                    color="success"
+                    variant="contained"
+                    type='submit'>Отправить</Button>
             </form>
         </ThemeProvider>
     </Container>
