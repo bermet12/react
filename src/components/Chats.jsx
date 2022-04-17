@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import '../styles/link.css';
-import { chatSelector } from "../redux/reducer/chatSelector/selector";
+import { chatSelector } from '../redux/reducer/selector/chatSelector';
 import { addMessageThunk } from '../redux/reducer/action'
 
 //Стили для формы

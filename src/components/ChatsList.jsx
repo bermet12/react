@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
-import { chatSelector } from "../redux/reducer/chatSelector/selector";
+import { chatSelector } from "../redux/reducer/selector/chatSelector";
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {

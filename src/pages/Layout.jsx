@@ -10,6 +10,7 @@ const Layout = () => {
                 <NavLink className={setActive} to={"/"}>Главная</NavLink>
                 <NavLink className={setActive} to={"profile"}>Профиль</NavLink>
                 <NavLink className={setActive} to={"chats"}>Чаты</NavLink>
+                <NavLink className={setActive} to={"friends"}>Друзья</NavLink>
             </header>
             <div>
                 <Outlet />

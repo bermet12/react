@@ -1,0 +1,26 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: #2e7d32;
+}
+
+.flex>div {
+    color: #2e7d32;
+    margin: 0 1rem 2rem 1rem;
+    text-align: center;
+}
+
+img {
+    display: inline-block;
+    max-width: 100%;
+}

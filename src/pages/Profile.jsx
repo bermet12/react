@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import '../styles/profile.css';
-import { profileSelector } from "../redux/reducer/profileSelector/selector";
-import { activeSelector } from "../redux/reducer/profileSelector/selector";
+import { profileSelector } from "../redux/reducer/selector/profileSelector";
+import { activeSelector } from "../redux/reducer/selector/profileSelector";
 
 export default function Profile() {
     const profileName = useSelector(profileSelector)
