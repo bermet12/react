@@ -6,6 +6,7 @@ import Profile from "./pages/Profile";
 import NotFoundPage from "./pages/NotFoundPage";
 import Chats from "./components/Chats";
 import ChatsList from "./components/ChatsList";
+import Friends from "./pages/Friends"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='*' element={<NotFoundPage />} />
           <Route path="/chats" exact element={<ChatsList />} />
+          <Route path='/friends' element={<Friends />} />
           <Route path="/chats/:chatId" element={<Chats />} />
         </Route>
       </Routes>
